@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Condensed', 'sans-serif';
+}
+
+header {
+    text-align: center;
+    background: #364366;
+    color: #fff;
+    margin-top: 2rem;
+}
+
+.card-column {
+    padding: 2rem;
+    height: auto;
+    width: 16.67%;
+
+}
+
+.card-column::after {
+    content: "";
+    clear: both;
+    display: table;
+    flex: 12%;
+    padding: 2rem;
+    width: 10rem;
+}
