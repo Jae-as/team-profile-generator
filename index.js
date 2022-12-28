@@ -1,6 +1,7 @@
 //Required packages
 const fs = require('fs');
 const inquirer = require('inquirer');
+// import fetch from "node-fetch";
 
 //required files
 const htmlUpdate = require('./htmlUpdate') 
