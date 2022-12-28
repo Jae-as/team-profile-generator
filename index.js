@@ -42,11 +42,11 @@ inquirer.prompt([
             }
     },{
         type: 'input',
-        message: 'What is your 4 character employee ID?',
+        message: 'What is your 5 character employee ID?',
         name: 'id',
         validate: function(answer) {
-            if (answer.length <3) {
-                return console.log('Please provide an ID longer than 3 characters')
+            if (answer.length =5) {
+                return console.log('Please provide an ID that is 5 characters')
             } else {
                 return true;}
             }
@@ -62,11 +62,11 @@ inquirer.prompt([
     },{
 
         type: 'input',
-        message: 'What is your 4 character office number?',
+        message: 'What is your 3 character office number?',
         name: 'office',
         validate: function(answer) {
-            if (answer.length <3) {
-                return console.log('Please provide an office number longer than 3 characters')
+            if (answer.length =3) {
+                return console.log('Please provide an office number that is 3 characters long')
             } else {
                 return true;}
             }
@@ -116,11 +116,11 @@ const buildTeam = () => {
                 }
          },{
             type: 'input',
-            message: 'What is his/her/their 4 character employee ID?',
+            message: 'What is his/her/their 5 character employee ID?',
             name: 'id',
             validate: function(answer) {
-                if (answer.length <3) {
-                    return console.log('Please provide an ID longer than 3 characters')
+                if (answer.length =5) {
+                    return console.log('Please provide an ID that is 5 characters')
                 } else {
                     return true;}
                 }
