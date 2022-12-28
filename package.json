@@ -6,6 +6,28 @@
     "inquirer": "^9.1.4",
     "jest": "^29.3.1",
     "type": "module"
-  }
-
+  },
+  "name": "team-profile-generator",
+  "description": "Week 10 (OOP) Homework",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jae-as/team-profile-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jae-as/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/Jae-as/team-profile-generator#readme"
 }

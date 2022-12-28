@@ -1,5 +1,5 @@
 const Manager = require('../lib/manager');
-const manager = new Manager('404');
+const manager = new Manager(404);
 
 describe ('Manager', () => {
 

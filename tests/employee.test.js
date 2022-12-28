@@ -1,5 +1,5 @@
 const Employee = require('../lib/employee');
-const employee = new Employee('Janaee Wallace', '24211', 'janaeew@hotmail.com');
+const employee = new Employee('Janaee Wallace', 24211, 'janaeew@hotmail.com');
 
 describe ('Employee', () => {
 
