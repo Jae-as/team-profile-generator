@@ -45,7 +45,7 @@ inquirer.prompt([
         message: 'What is your 5 character employee ID?',
         name: 'id',
         validate: function(answer) {
-            if (answer.length =5) {
+            if (answer.length ===5) {
                 return console.log('Please provide an ID that is 5 characters')
             } else {
                 return true;}
@@ -65,7 +65,7 @@ inquirer.prompt([
         message: 'What is your 3 character office number?',
         name: 'office',
         validate: function(answer) {
-            if (answer.length =3) {
+            if (answer.length ===3) {
                 return console.log('Please provide an office number that is 3 characters long')
             } else {
                 return true;}
@@ -119,7 +119,7 @@ const buildTeam = () => {
             message: 'What is his/her/their 5 character employee ID?',
             name: 'id',
             validate: function(answer) {
-                if (answer.length =5) {
+                if (answer.length ===5) {
                     return console.log('Please provide an ID that is 5 characters')
                 } else {
                     return true;}
