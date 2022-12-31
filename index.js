@@ -44,12 +44,6 @@ inquirer.prompt([
         type: 'input',
         message: 'What is your 5 character employee ID?',
         name: 'id',
-        validate: function(answer) {
-            if (answer.length ===5) {
-                return console.log('Please provide an ID that is 5 characters')
-            } else {
-                return true;}
-            }
     },{
         type: 'input',
         message: 'What is your email address?',
@@ -64,12 +58,6 @@ inquirer.prompt([
         type: 'input',
         message: 'What is your 3 character office number?',
         name: 'office',
-        validate: function(answer) {
-            if (answer.length ===3) {
-                return console.log('Please provide an office number that is 3 characters long')
-            } else {
-                return true;}
-            }
     }
 ])
 
@@ -80,7 +68,8 @@ inquirer.prompt([
     team.push(manager);
     console.log(manager);
     buildTeam();
-})}
+})
+}
 
 //Add additional employees to team
 const buildTeam = () => {
@@ -88,7 +77,6 @@ const buildTeam = () => {
     console.log (`Please add the additional members of your team`);
 
     return inquirer.prompt([
-
         {
             type: 'list',
             message: 'Which team member role are you adding?',
@@ -98,13 +86,28 @@ const buildTeam = () => {
                 'Intern',
                 'No new additions' 
             ],
-            validate: function(answer) {
-                if (answer === 'No new additions') {
-                    return complete
-                } else {
-                    return true;}
-                }
-        },{
+        },
+    ]) .then (response => {
+        // const {teamrole, name, id, email, github, university, complete} = updateTeamInfo;
+    
+        if (response.teamrole === 'Engineer')
+        {
+            getEngineerInfo();
+            // employee = new Engineer (name, id, email, teamrole, github);
+            // console.log(employee);
+        } else if (response.teamrole === 'Intern')
+        {
+            getInternInfo();
+            // employee = new Intern (name, id, email, teamrole, university);
+            // console.log(employee);
+        } else {
+            buildNewTeam();
+        }
+     })
+}
+   function getEngineerInfo(){
+   inquirer.prompt(
+    [{
             type: 'input',
             message: 'What is his/her/their first and last name?',
             name: 'name',
@@ -118,12 +121,6 @@ const buildTeam = () => {
             type: 'input',
             message: 'What is his/her/their 5 character employee ID?',
             name: 'id',
-            validate: function(answer) {
-                if (answer.length ===5) {
-                    return console.log('Please provide an ID that is 5 characters')
-                } else {
-                    return true;}
-                }
         },{
             type: 'input',
             message: 'What is your email address?',
@@ -144,7 +141,43 @@ const buildTeam = () => {
                 }   return 'Please provide a valid Github profile handle.';
             }
 
-        },{
+        }])
+    
+        .then(response => {
+            const {name, id, email, github} = response;
+            let employee = new Engineer (name, id, email, github);
+            console.log(employee);
+            team.push(employee);
+            buildTeam();
+        })
+    }
+    
+function getInternInfo(){
+inquirer.prompt(
+    [{
+        type: 'input',
+        message: 'What is his/her/their first and last name?',
+        name: 'name',
+        validate: function(answer) {
+            if (answer.length <10) {
+                return console.log('Please provide a description longer than 10 characters')
+            } else {
+                return true;}
+            }
+     },{
+        type: 'input',
+        message: 'What is his/her/their 5 character employee ID?',
+        name: 'id',
+    },{
+        type: 'input',
+        message: 'What is your email address?',
+        name: 'email',
+        validate: email => {
+            valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+            if(valid) {
+                return true; 
+                } return 'Please provide a valid email.';}
+     },{
             when: (input) => input.role === 'Intern',
             type: 'input',
             message: 'Please provide which univeristy this intern attends.',
@@ -152,58 +185,27 @@ const buildTeam = () => {
             validate: (answer) => {
                 if(answer.length <3) {
                     return true;
-                }   return 'Please provide a valid Github profile handle.';
+                }   return 'Please provide a valid University name.';
             }
-        },{
-            type: 'list',
-            name: 'complete',
-            message: 'Have you added all your team members?',
-            choices:[
-                'Yes',
-                'No'
-            ],
-            validate: function(answer) {
-                if (answer === 'No') {
-                    return teamrole
-                } else {
-                    return updateHTMLFile();}
-                }
-
         }
-    
-    ])
+])
 
-.then (updateTeamInfo => {
-    const {teamrole, name, id, email, github, university, complete} = updateTeamInfo;
-
-    if (teamrole === 'Engineer')
-    {
-        employee = new Engineer (name, id, email, teamrole, github);
-        console.log(employee);
-    } else (teamrole === 'Intern')
-    {
-        employee = new Intern (name, id, email, teamrole, university);
-        console.log(employee);
-    }
+.then(response => {
+    const {name, id, email, university} = response;
+    let employee = new Intern (name, id, email, university);
+    console.log(employee);
     team.push(employee);
-
-    if (complete) {
-        return buildTeam(team);
-    } else {
-        console.log(team);
-        fs.writeFile(team);
-    }
+    buildTeam();
 })
-
-.catch ( (err) => {
-    console.log(err);
 }
-)};
-
+   
+function buildNewTeam() {
+    updateHTMLFile(team);
+} 
 
 const updateHTMLFile = data => {
-
-    fs.writeFile('index.html', htmlUpdate(data), err => {
+    const htmldata = htmlUpdate(data);
+    fs.writeFile('index.html', htmldata, err => {
         if (err) {
             console.log(err);
             return
