@@ -5,10 +5,8 @@ Week 10 (OOP) homework using terminal to generate team profile website
 1. [Description](#Description)
 2. [Feature](#Feature)
 3. [Mockup](#Mockup)
-4. [Installation](#Installation)
-5. [Usgae](#Usage)
-6. [Test Instructions](#Test-Instructions)
-7. [Questions](#Questions)
+4. [Recorded Video](#Recorded-Video)
+5. [Questions](#Questions)
 
 # Description
 ***
