@@ -51,7 +51,8 @@ THEN I exit the application, and the HTML is generated
 ***
 ###### [Back to Table of Contents](#Table-of-Contents)
 The following images show the web application's appearance:
-![Web page after entering team data] (./assets/images/teamprofilemanager.png)
+![Webpage after updated team](./assets/images/teamprofilemanager.png)
+
 
 
 ## Recorded Video
