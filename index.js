@@ -131,12 +131,11 @@ const buildTeam = () => {
                     return true; 
                     } return 'Please provide a valid email.';}
          },{
-            when: (input) => input.role === 'Engineer',
             type:  'input',
             message: 'Please provide this engineer GitHub profile handle.',
             name: 'github',
             validate: (answer) => {
-                if(answer.length <3) {
+                if(answer.length >3) {
                     return true;
                 }   return 'Please provide a valid Github profile handle.';
             }
@@ -178,12 +177,11 @@ inquirer.prompt(
                 return true; 
                 } return 'Please provide a valid email.';}
      },{
-            when: (input) => input.role === 'Intern',
             type: 'input',
             message: 'Please provide which univeristy this intern attends.',
             name: 'university',
             validate: (answer) => {
-                if(answer.length <3) {
+                if(answer.length >3) {
                     return true;
                 }   return 'Please provide a valid University name.';
             }

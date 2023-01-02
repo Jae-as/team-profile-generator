@@ -5,8 +5,7 @@ function htmlUpdate(team) {
     teamSite += teammember.htmlUpdate();
  });
 
- return
- `
+ return `
  <!doctype html>
  <html lang="en">
  
